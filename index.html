@@ -10,128 +10,229 @@
 <style>
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
 }
 
 body{
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:15px;
-background:
-linear-gradient(rgba(0,10,20,.88),rgba(0,10,20,.88)),
-url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e');
-background-size:cover;
-background-position:center;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    overflow:hidden;
+    background:
+    radial-gradient(circle at top left,#1d4ed8,#020617 45%),
+    radial-gradient(circle at bottom right,#06b6d4,#020617 40%);
+}
+
+/* Premium Background Glow */
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    width:350px;
+    height:350px;
+    border-radius:50%;
+    filter:blur(80px);
+    opacity:.35;
+    z-index:-1;
+}
+
+body::before{
+    background:#00e5ff;
+    top:-120px;
+    left:-120px;
+}
+
+body::after{
+    background:#2563eb;
+    bottom:-120px;
+    right:-120px;
 }
 
 .card{
-width:85%;
-max-width:320px;
-background:#07111f;
-border-radius:24px;
-padding:18px;
-color:white;
-border-top:4px solid #00d9ff;
-box-shadow:
-0 0 30px rgba(0,217,255,.15),
-0 15px 40px rgba(0,0,0,.5);
+    width:min(92%,380px);
+    padding:22px;
+    border-radius:28px;
+    text-align:center;
+
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    box-shadow:
+    0 0 35px rgba(0,229,255,.18),
+    0 20px 45px rgba(233,57,57,.45);
+
+    animation:cardFloat 5s ease-in-out infinite;
 }
 
-.profile-box{
-display:flex;
-justify-content:center;
-margin-bottom:15px;
+@keyframes cardFloat{
+    0%,100%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-6px);
+    }
 }
 
 .profile{
-width:95px;
-height:95px;
-border-radius:50%;
-border:3px solid #00e5ff;
-object-fit:cover;
-box-shadow:
-0 0 8px #00e5ff,
-0 0 20px #00e5ff;
+    width:105px;
+    height:105px;
+    border-radius:50%;
+    border:4px solid #00e5ff;
+
+    box-shadow:
+    0 0 15px #00e5ff,
+    0 0 40px rgba(0,229,255,.7);
+
+    object-fit:cover;
+}
+
+/* NEW TITLE */
+
+.title{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin:15px 0;
+    line-height:1.1;
+}
+
+.title .name{
+    color:#fff;
+    font-size:34px;
+    font-weight:800;
+    letter-spacing:1px;
+    text-shadow:0 0 15px rgba(255,255,255,.4);
+}
+
+.title .tagline{
+    margin-top:5px;
+    font-size:15px;
+    font-weight:600;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:#7ee7ff;
 }
 
 .badge{
-width:100%;
-text-align:center;
-padding:10px;
-border-radius:25px;
-background:rgba(0,229,255,.08);
-border:1px solid rgba(0,229,255,.2);
-color:#00e5ff;
-font-weight:700;
-font-size:13px;
-margin-bottom:18px;
+    margin-top:15px;
+    padding:8px 14px;
+    border-radius:25px;
+    display:inline-block;
+    background:rgba(0,229,255,.12);
+    border:1px solid rgba(0,229,255,.35);
+    color:#7ee7ff;
+    font-size:14px;
 }
 
-h1{
-font-size:28px;
-font-weight:900;
-text-align:center;
-line-height:1.1;
-margin-bottom:15px;
-}
-
-h1 span{
-background:linear-gradient(90deg,#00e5ff,#2196f3);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+.description-box{
+    margin:18px 0;
+    padding:16px;
+    border-radius:18px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.15);
+    box-shadow:0 0 15px rgba(0,229,255,.15);
 }
 
 .description{
-text-align:center;
-font-size:13px;
-line-height:1.6;
-color:#bdbdbd;
-margin-bottom:18px;
+    color:#f1f5f9;
+    font-size:12px;
+    line-height:1.7;
+    text-align:center;
 }
 
 .list{
-font-size:14px;
-margin-bottom:12px;
-color:#d8d8d8;
+    color:#f1f5f9;
+    margin:14px 0;
+    font-size:15px;
 }
 
+/* Premium Animated Button */
+
 .join-btn{
-display:block;
-width:100%;
-text-align:center;
-text-decoration:none;
-padding:15px;
-margin-top:18px;
-border-radius:40px;
-background:linear-gradient(90deg,#16c7ff,#2196f3);
-color:white;
-font-size:17px;
-font-weight:800;
-box-shadow:0 8px 20px rgba(33,150,243,.35);
-transition:.3s;
+    position:relative;
+    overflow:hidden;
+
+    display:block;
+    width:100%;
+    text-align:center;
+    text-decoration:none;
+
+    margin-top:18px;
+    padding:17px;
+    border-radius:50px;
+
+    background:linear-gradient(90deg,#00d4ff,#2563eb);
+    color:#fff;
+    font-size:18px;
+    font-weight:800;
+
+    box-shadow:
+    0 0 20px rgba(0,212,255,.6),
+    0 10px 35px rgba(37,99,235,.5);
+
+    animation:pulse 1.6s infinite;
+    transition:.3s;
 }
 
 .join-btn:hover{
-transform:scale(1.02);
+    transform:translateY(-3px) scale(1.04);
+}
+
+.join-btn::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.5),
+        transparent
+    );
+    animation:shine 2.5s infinite;
+}
+
+@keyframes shine{
+    100%{
+        left:120%;
+    }
+}
+
+@keyframes pulse{
+
+0%{
+box-shadow:0 0 0 0 rgba(0,212,255,.7);
+}
+
+70%{
+box-shadow:0 0 0 18px rgba(0,212,255,0);
+}
+
+100%{
+box-shadow:0 0 0 0 rgba(0,212,255,0);
+}
+
 }
 
 .status{
-text-align:center;
-margin-top:14px;
-font-size:13px;
-color:#d8d8d8;
+    margin-top:15px;
+    color:#dbeafe;
+    font-size:14px;
 }
 
 .dot{
-color:#00e5ff;
-font-size:18px;
-vertical-align:middle;
-text-shadow:0 0 10px #00e5ff;
+    color:#00ff66;
 }
 
 </style>
@@ -141,42 +242,41 @@ text-shadow:0 0 10px #00e5ff;
 
 <div class="card">
 
-<div class="profile-box">
-<img src="photo.jpg.jpg" class="profile" alt="Logo">
+    <img src="photo.jpg.jpg" class="profile" alt="Logo">
+
+    <div class="badge">
+        🏏 பிரீமியம் கிரிக்கெட் அப்டேட்ஸ்
+    </div>
+
+    <!-- UPDATED TITLE -->
+    <h1 class="title">
+        <span class="name">VASANTH</span>
+        <span class="tagline">THE CRICKET SYNDICATE🔱</span>
+    </h1>
+
+    <div class="description-box">
+    <div class="description">
+        Join India's leading sports updates community.
+        Get expert analysis, historical statistics and
+        live match updates directly on Telegram.🏏
+    </div>
 </div>
 
-<div class="badge">
-🏏 CRICKET UPDATES CHANNEL
-</div>
+    <div class="list">📊 Live Scores & Match Updates</div>
 
-<h1>
-VASANTH-<span>THE CRICKET SYNDICATE</span>
-</h1>
+    <div class="list">📈 Predictions & Playing XI</div>
 
-<div class="description">
-Join India's leading sports updates community.
-Get expert analysis, historical statistics and
-live match updates directly on Telegram.
-</div>
+    <div class="list">🔥 Highlights & Expert Analysis</div>
 
-<div class="list">📊 Live scores & match updates</div>
+    <div class="list">📢 Fast Alerts & Key Moments</div>
 
-<div class="list">🏆 IPL, World Cup, T20, ODI & Test coverage</div>
+    <a href="https://t.me/+x7nu0yZr-h8zMGY1" class="join-btn">
+        ✈️ JOIN FREE TELEGRAM
+    </a>
 
-<div class="list">📈 Predictions & Playing XI</div>
-
-<div class="list">🔥 Highlights & expert analysis</div>
-
-<div class="list">📢 Fast alerts & key moments</div>
-
-<a href="https://t.me/+x7nu0yZr-h8zMGY1" class="join-btn">
-✈️ JOIN FREE TELEGRAM
-</a>
-
-<div class="status">
-<span class="dot">●</span>
-Get login details in 2 mins
-</div>
+    <div class="status">
+        <span class="dot">●</span> Auto Accept in 5 Seconds
+    </div>
 
 </div>
 
